@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Teko:wght@300..700&display=swap');
+
+.banner {
+  background: rgb(255,0,0);
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(50,44,122,1) 100%);
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.navname {
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+  height: 4rem;
+}
+.buttons {
+  display: flex;
+  margin: 0 1rem;
+}
+.buttons a:hover{
+  color: rgb(0, 0, 0);
+  transition: all 0.25s ease-in;
+  border-bottom: 1px solid black;
+}
+
+a {
+  margin: 0 1.5rem;
+  font-size: 1.2rem;
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #d62839;
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: none;
+}
+
+.dropbtn {
+  background-color: #e63946;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ff6f61;
+  width: auto;
+  min-width: 150px;
+  z-index: 1;
+  text-align: center;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid #d62839;
+}
+
+.dropdown-content a:hover {
+  background-color: #d62839;
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    display: none;
+  }
+
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 3%;
+    z-index: 2;
+  }
+
+  .dropdown-content.show {
+    display: block;
+  }
+}
+
+@media (max-width: 400px) {
+  .navname {
+    font-size: 1.2rem;
+  }
+  .dropdown {
+    right: 1%;
+  }
+}
+
+@media (min-width: 769px) {
+  .dropdown {
+    display: none;
+  }
+}

@@ -1,0 +1,46 @@
+/* LostItem.css */
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+  color: white;
+}
+
+.report-button {
+  background-color: #e63946;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.report-button:hover {
+  background-color: #d62839;
+}
+
+/* Main content container */
+.contentt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; /* Adjust the gap between items */
+  padding: 1rem 2rem; /* Padding around the content */
+}
+
+/* Optional: You can add some styling for LostItemCard here or in its own CSS file */
+.lost-item-card {
+  flex: 0 1 300px; /* Each item will take up 300px width, adjust as necessary */
+  max-width: 300px; /* Ensures the items don’t stretch beyond this width */
+  margin: 0.5rem;
+}
+@media (max-width:700px) {
+  
+  .header h2{
+    font-size: 1rem;
+  }
+}

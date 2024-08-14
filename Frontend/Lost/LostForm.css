@@ -1,0 +1,74 @@
+/* Full screen background setup */
+.FormBackground {
+  background-image: url("../public/fromBackground.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  width: 100vw;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  padding-top: 80px;
+}
+
+/* Form Styling */
+.LostForm {
+  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for better background visibility */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow for depth */
+  max-width: 500px;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+/* Form Heading */
+.LostForm h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #007bff; /* Blue underline for heading */
+  padding-bottom: 10px;
+  animation: slideIn 1s ease-in-out; /* Slide-in animation */
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 15px;
+  animation: fadeIn 1.2s ease-in-out; /* Fade-in animation */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 600; /* Bold labels */
+  transition: color 0.3s ease;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Subtle blue shadow on focus */
+}
+
+.form-group input:focus + label {
+  color: #007bff; /* Label color change on focus */
+}
+
