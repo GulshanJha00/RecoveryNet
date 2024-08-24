@@ -1,0 +1,133 @@
+/* Full screen background setup */
+.FormBackground {
+    background-image: url("/public/fromBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Stylish form container */
+  .LostForm {
+    background-color: rgba(255, 255, 255, 0.85); /* Increased transparency */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Form container hover effect */
+  .LostForm:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3); /* More prominent shadow on hover */
+  }
+  
+  /* Form title styling */
+  .LostForm h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+    color: #007bff;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  /* Styling for form groups */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Label styling */
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Enhanced input fields styling */
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Input fields focus effect */
+  .form-group input[type="text"]:focus,
+  .form-group input[type="email"]:focus,
+  .form-group input[type="file"]:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Subtle glow on focus */
+    outline: none;
+  }
+  
+  /* Enhanced submit button styling */
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Submit button hover effect */
+  .submit-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .LostForm {
+      padding: 20px;
+      width: 90%;
+    }
+  
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="file"] {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .submit-btn {
+      padding: 12px;
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .LostForm {
+      padding: 15px;
+      width: 90%;
+    }
+  
+    .form-group label {
+      font-size: 13px;
+    }
+  
+    .submit-btn {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+  

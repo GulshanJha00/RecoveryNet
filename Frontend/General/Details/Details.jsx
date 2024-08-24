@@ -9,7 +9,7 @@ const Details = () => {
   const toggleFound = () => setIsFoundOpen(!isFoundOpen);
 
   return (
-    <div className="body">
+    <div className="bodyyy">
       <div className="how">
         <h1>How to Use RecoveryNet</h1>
         <p>

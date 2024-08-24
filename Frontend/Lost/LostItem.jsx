@@ -4,19 +4,21 @@ import LostItemCard from "./LostItemCard"
 const LostItem = () => {
   return (
     <>
-      
-      <header className="header">
-          <h2>Lost an Item? Report Here</h2>
-          <Link to="/reportlost" className="report-button">Report Item</Link>
-        </header>
-        <div className="contentt">
+      <div className="bgrund">
 
-          <LostItemCard/>
-          <LostItemCard/>
-          <LostItemCard/>
-          <LostItemCard/>
-        
-        </div>
+        <header className="header">
+            <h2>Lost an Item? Report Here</h2>
+            <Link to="/reportlost" className="report-button">Report Item</Link>
+          </header>
+          <div className="contentt">
+
+            <LostItemCard/>
+            <LostItemCard/>
+            <LostItemCard/>
+            <LostItemCard/>
+          
+          </div>
+      </div>
 
     </>
   )

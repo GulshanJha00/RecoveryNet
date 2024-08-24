@@ -1,16 +1,21 @@
 /* Full screen background setup */
 .FormBackground {
-  background-image: url("../public/fromBackground.jpg");
+  background-image: url("./fromBackground.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
-  width: 100vw;
+  width: calc(100vw-1px);
   min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   padding-top: 80px;
+}
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }
 
 /* Form Styling */

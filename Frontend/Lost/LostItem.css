@@ -1,4 +1,9 @@
 /* LostItem.css */
+.bgrund {
+  background: linear-gradient(to bottom right, #A0C4FF, #1100ff);
+}
+
+
 
 .header {
   width: 100%;

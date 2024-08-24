@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../Lost/LostForm.css'; // Import the CSS file
-import axios from 'axios';
+import axios from "axios";
+import '../Lost/LostForm.css'; 
 
 const FoundForm = () => {
   const [itemName, setItemName] = useState('');
@@ -9,16 +9,52 @@ const FoundForm = () => {
   const [semester, setSemester] = useState('');
   const [branch, setBranch] = useState('');
   const [location, setLocation] = useState('');
-  const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
 
-  const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [semesterError, setSemesterError] = useState('');
+
+  const validateForm = () => {
+    let isValid = true;
+
+    // Validate email
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@nie\.ac\.in$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email ending with @nie.ac.in");
+      isValid = false;
+    } else {
+      setEmailError('');
+    }
+
+    // Validate phone number
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      setPhoneError("Please enter a valid 10-digit phone number");
+      isValid = false;
+    } else {
+      setPhoneError('');
+    }
+
+    // Validate semester
+    const semesterNumber = parseInt(semester, 10);
+    if (isNaN(semesterNumber) || semesterNumber < 1 || semesterNumber > 8) {
+      setSemesterError("Semester should be a number between 1 and 8");
+      isValid = false;
+    } else {
+      setSemesterError('');
+    }
+
+    return isValid;
   };
-  
-  const handleSubmit = async (e) => {    
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Create a FormData object
+
+    if (!validateForm()) {
+      return;
+    }
+
     const formData = new FormData();
     formData.append('itemName', itemName);
     formData.append('email', email);
@@ -26,24 +62,27 @@ const FoundForm = () => {
     formData.append('semester', semester);
     formData.append('branch', branch);
     formData.append('location', location);
-    formData.append('image', image);
-  
+    formData.append('file', file);
+
+    console.log("Submitting form with data:", { itemName, email, phoneNumber, semester, branch, location, file });
+    
     try {
-      const response = await axios.post('http://localhost:3000/reportfound', formData, {
+      await axios.post("http://localhost:3000/reportfound", formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log('Response:', response.data);
-    } catch (error) {
-      console.error('Error submitting the form:', error);
+      console.log("Form submitted successfully.");
+    } catch (err) {
+      console.log("Error while sending the data in Found Form", err);
     }
   };
-  
+
   return (
     <div className="FormBackground">
       <form className="LostForm" method='POST' onSubmit={handleSubmit}>
         <h2>Provide Details of the Item You Found</h2>
+        
         <div className="form-group">
           <label>Item Name</label>
           <input
@@ -64,6 +103,7 @@ const FoundForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          {emailError && <span className="error-message">{emailError}</span>}
         </div>
 
         <div className="form-group">
@@ -75,6 +115,7 @@ const FoundForm = () => {
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
           />
+          {phoneError && <span className="error-message">{phoneError}</span>}
         </div>
 
         <div className="form-group">
@@ -86,6 +127,7 @@ const FoundForm = () => {
             onChange={(e) => setSemester(e.target.value)}
             required
           />
+          {semesterError && <span className="error-message">{semesterError}</span>}
         </div>
 
         <div className="form-group">
@@ -100,7 +142,7 @@ const FoundForm = () => {
         </div>
 
         <div className="form-group">
-          <label>Location</label>
+          <label>Where do you found the item and at what time?</label>
           <input
             type="text"
             value={location}
@@ -111,14 +153,17 @@ const FoundForm = () => {
         </div>
 
         <div className="form-group">
-          <label>Upload Image</label>
-          <input type="file" onChange={handleImageChange} required />
+          <label>Image</label>
+          <input
+            type="file"
+            onChange={e => setFile(e.target.files[0])}  // No value attribute here
+          />
         </div>
 
-        <button type="submit" className="submit-btn">Submit</button>
+        <button type="submit" style={{ "marginTop": "10px" }} className="submit-btn">Submit</button>
       </form>
     </div>
   );
-}
+};
 
 export default FoundForm;
