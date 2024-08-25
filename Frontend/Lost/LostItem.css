@@ -1,6 +1,7 @@
-/* LostItem.css */
 .bgrund {
   background: linear-gradient(to bottom right, #A0C4FF, #1100ff);
+  margin: 0;
+  height: 100vh;
 }
 
 
@@ -13,6 +14,9 @@
   padding: 1rem 2rem;
   background-color: #333;
   color: white;
+}
+.header h2{
+  font-size: 1.5rem;
 }
 
 .report-button {
@@ -46,6 +50,20 @@
 @media (max-width:700px) {
   
   .header h2{
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .report-button {
+    background-color: #e63946;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .report-button:hover {
+    background-color: #d62839;
   }
 }

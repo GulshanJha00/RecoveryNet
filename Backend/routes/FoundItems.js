@@ -25,11 +25,11 @@ const FoundItemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  fileName: {
+  fileUploadName: {
     type: String,
     required: false, // Optional if not every entry has an image
   },
-  filePath: {
+  fileUploadPath: {
     type: String,
     required: false, // Optional if not every entry has an image
   },

@@ -1,28 +1,23 @@
-import "./LostItemCard.css"
-  
-const LostItemCard = () => {
+import "./LostItemCard.css";
+
+const LostItemCard = ({ item }) => {
   return (
-    <>
-         <div className="lost-items-container">
-          <section className="lost-items-list">
-            
-                <div className="lost-item-card">
-                  <img src="/detailsBackground.jpg" alt="Item" className="lost-item-image" />
-                  <div className="lost-item-details">
-                    <h2>Phone</h2>
-                    <p><strong>Email:</strong> gulshan@gmail.com</p>
-                    <p><strong>Phone:</strong> 12345</p>
-                    <p><strong>Year:</strong> First</p>
-                    <p><strong>Branch:</strong> ISE</p>
-                    <p><strong>Section:</strong> A</p>
-                  </div>
-                </div>
+    <div className="lost-item-card">
+      <img
+        src={item.fileName ? `http://localhost:3000/${item.fileName}` : "/detailsBackground.jpg"}
+        alt="Item"
+        className="lost-item-image"
+      />
+      <div className="lost-item-details">
+        <h2>{item.itemName}</h2>
+        <p><strong>Email:</strong> {item.email}</p>
+        <p><strong>Phone:</strong> {item.phoneNumber}</p>
+        <p><strong>Year:</strong> {item.semester}</p>
+        <p><strong>Branch:</strong> {item.branch}</p>
+        <p><strong>Location:</strong> {item.location}</p>
+      </div>
+    </div>
+  );
+};
 
-          </section>
-        </div>
-      
-    </>
-  )
-}
-
-export default LostItemCard
+export default LostItemCard;

@@ -12,6 +12,13 @@ router.use(cors({
   allowedHeaders: 'Content-Type',
 }));
 
+
+
+
+router.use(express.static(path.join(__dirname, 'public')));
+
+
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const uploadPath = path.join(__dirname, '../public');
@@ -26,10 +33,19 @@ const upload = multer({
   storage: storage
 });
 
+
+
 router.post('/reportfound', upload.single("file"), async (req, res) => {
   try {
     const { itemName, email, phoneNumber, semester, branch, location } = req.body;
-    const file = req.file; // Access the uploaded file
+    
+    console.log("Request Body:", req.body); // Log the request body
+    console.log("File Information:", req.file); // Log the file info
+
+    if (!req.file) {
+      console.error('File upload failed.');
+      return res.status(400).json({ message: 'File upload failed' });
+    }
 
     const newItem = new FoundItem({
       itemName,
@@ -38,8 +54,8 @@ router.post('/reportfound', upload.single("file"), async (req, res) => {
       semester,
       branch,
       location,
-      fileName: file ? file.filename : null,  // Store the filename in the database
-      filePath: file ? file.path : null  // Store the file path in the database
+      fileUploadName: req.file.filename,  
+      fileUploadPath: req.file.path,
     });
 
     await newItem.save();
@@ -48,10 +64,12 @@ router.post('/reportfound', upload.single("file"), async (req, res) => {
     res.status(200).json({ message: 'Form submitted successfully', newItem });
   } catch (error) {
     console.error('Error submitting the form:', error.message);
-
     res.status(500).json({ message: 'Error submitting the form', error: error.message });
   }
 });
+
+
+
 
 
 //REPORT LOST
@@ -72,8 +90,8 @@ router.post('/reportlost', upload.single("file"), async (req, res) => {
       semester,
       branch,
       location,
-      fileName: file ? file.filename : null,  // Store the filename in the database
-      filePath: file ? file.path : null  // Store the file path in the database
+      fileName: file ? file.filename : null,  
+      filePath: file ? file.path : null 
     });
 
     await newItem.save();
@@ -86,5 +104,31 @@ router.post('/reportlost', upload.single("file"), async (req, res) => {
     res.status(500).json({ message: 'Error submitting the form', error: error.message });
   }
 });
+
+//Get Route 
+
+router.get('/lostitems', async (req, res) => {
+  try {
+    const lostItems = await LostItem.find({});
+    res.status(200).json(lostItems);
+  } catch (error) {
+    console.error('Error fetching lost items:', error.message);
+    res.status(500).json({ message: 'Error fetching lost items', error: error.message });
+  }
+});
+
+
+
+router.get('/founditems', async (req, res) => {
+  try {
+    const foundItems = await FoundItem.find({});
+    res.status(200).json(foundItems);
+  } catch (error) {
+    console.error('Error fetching found items:', error.message);
+    res.status(500).json({ message: 'Error fetching found items', error: error.message });
+  }
+});
+
+
 
 module.exports = router;
