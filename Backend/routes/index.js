@@ -1,5 +1,5 @@
 const express = require('express');
-const FoundItem = require("./users");
+const FoundItem = require("./FoundItems");
 const router = express.Router();
 const multer = require("multer");
 const cors = require('cors');
@@ -17,6 +17,17 @@ router.use(cors({
 
 router.use(express.static(path.join(__dirname, 'public')));
 
+router.get('/images/:filename', (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(__dirname, '../public', filename);
+  
+  res.sendFile(filePath, err => {
+    if (err) {
+      console.error('Error sending file:', err);
+      res.status(404).send('File not found');
+    }
+  });
+});
 
 
 const storage = multer.diskStorage({
@@ -38,7 +49,7 @@ const upload = multer({
 router.post('/reportfound', upload.single("file"), async (req, res) => {
   try {
     const { itemName, email, phoneNumber, semester, branch, location } = req.body;
-    
+
     console.log("Request Body:", req.body); // Log the request body
     console.log("File Information:", req.file); // Log the file info
 
@@ -47,6 +58,9 @@ router.post('/reportfound', upload.single("file"), async (req, res) => {
       return res.status(400).json({ message: 'File upload failed' });
     }
 
+    
+    const fileUploadName = req.file.filename;
+    const fileUploadPath = req.file.path
     const newItem = new FoundItem({
       itemName,
       email,
@@ -54,10 +68,12 @@ router.post('/reportfound', upload.single("file"), async (req, res) => {
       semester,
       branch,
       location,
-      fileUploadName: req.file.filename,  
-      fileUploadPath: req.file.path,
+      fileUploadName,  
+      fileUploadPath,
+      // Add the ID or another identifier if needed
     });
-
+    console.log(fileUploadName);
+    
     await newItem.save();
     console.log("Found item saved:", newItem);
 
@@ -67,6 +83,7 @@ router.post('/reportfound', upload.single("file"), async (req, res) => {
     res.status(500).json({ message: 'Error submitting the form', error: error.message });
   }
 });
+
 
 
 

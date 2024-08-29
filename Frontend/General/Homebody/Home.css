@@ -1,112 +1,113 @@
 .Body {
-    position: relative;
-    height: calc(100vh - 3.5rem);
-    background-color: black;
-    background-image: url("/NIEIT-north-block-e1664798527317.jpg");
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-  }
-  
+  position: relative;
+  height: calc(100vh - 3.5rem);
+  background-color: black;
+  background-image: url("/NIEIT-north-block-e1664798527317.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
 
-  
-  .content {
-    color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.629);
-    padding: 1rem;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
+.content {
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.629);
+  padding: 1rem;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
 
-  .button1:hover{
-    background-color: #d62839;
+.button1:hover {
+  background-color: #d62839;
+}
+.button2:hover {
+  background-color: #20137d;
+}
+
+.content h1,
+.content h3 {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  font-family: "Courier New", Courier, monospace;
+  transform: translateY(-20px);
+  animation: fadeInUp 1s forwards;
+}
+
+.content h3 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.buttonz {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.button1 {
+  background-color: red;
+}
+.button2 {
+  background-color: blue;
+}
+
+.buttonz a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buttonz a:hover {
+  transform: scale(1.05);
+}
+
+.buttonz a:active {
+  background-color: #b32d26;
+  transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .button2:hover{
-    background-color: #20137d;
-  }
-  
-  .content h1, .content h3 {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-  }
-  
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
   .content h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    font-family: 'Courier New', Courier, monospace;
-    transform: translateY(-20px);
-    animation: fadeInUp 1s forwards;
-  }
-  
-  .content h3 {
-    font-size: 2rem;
-    margin: 0.5rem 0;
-  }
-  
-  .buttonz {
-    display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
-  }
-  .button1{
-    background-color: red;
-  }
-  .button2{
-    background-color: blue;
-  }
-  
-  .buttonz a {
-    
-    color: white;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
     font-size: 1.5rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   }
-  
-  .buttonz a:hover {
-    transform: scale(1.05);
-  }
-  
-  .buttonz a:active {
-    background-color: #b32d26;
-    transform: scale(0.95);
-  }
-  
-  /* Animations */
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 600px) {
-    .content h1 {
-      font-size: 1.5rem;
-    }
-  
-    .content h3 {
-      font-size: 1rem;
-    }
-    .Body {
-        height: calc(100vh - 2rem);
-    }
-  
-    .buttonz a {
-        font-size: 0.8rem;
-    padding: 0.7rem 1.5rem;
 
-    }
+  .content h3 {
+    font-size: 1rem;
   }
+  .Body {
+    height: calc(100vh - 2rem);
+  }
+
+  .buttonz a {
+    font-size: 0.8rem;
+    padding: 0.7rem 1.5rem;
+  }
+}

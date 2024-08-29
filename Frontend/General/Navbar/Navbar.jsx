@@ -22,7 +22,7 @@ const Navbar = () => {
         <button className="dropbtn" onClick={toggleDropdown}>
           {dropdownOpen ? "Close" : "Menu"}
         </button>
-        <div className={`dropdown-content ${dropdownOpen ? 'show' : ''}`}>
+        <div className={`dropdown-content ${dropdownOpen ? "show" : ""}`}>
           <Link to="/">Home</Link>
           <Link to="/details">How to Use?</Link>
           <Link to="/contact">Contact Us</Link>

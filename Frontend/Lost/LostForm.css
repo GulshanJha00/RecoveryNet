@@ -20,7 +20,12 @@
 
 /* Form Styling */
 .LostForm {
-  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for better background visibility */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Slight transparency for better background visibility */
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow for depth */
@@ -64,7 +69,9 @@
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .form-group input:focus {
@@ -76,4 +83,3 @@
 .form-group input:focus + label {
   color: #007bff; /* Label color change on focus */
 }
-

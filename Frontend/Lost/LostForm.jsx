@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import axios from "axios";
-import '../Lost/LostForm.css'; 
+import { useNavigate } from "react-router-dom";  // Import useNavigate
+import "./LostForm.css";
 
 const LostForm = () => {
-  const [itemName, setItemName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [semester, setSemester] = useState('');
-  const [branch, setBranch] = useState('');
-  const [location, setLocation] = useState('');
+  const [itemName, setItemName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [semester, setSemester] = useState("");
+  const [branch, setBranch] = useState("");
+  const [location, setLocation] = useState("");
   const [file, setFile] = useState(null);
 
-  const [emailError, setEmailError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
-  const [semesterError, setSemesterError] = useState('');
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [semesterError, setSemesterError] = useState("");
+
+  const navigate = useNavigate();  // Initialize useNavigate
 
   const validateForm = () => {
     let isValid = true;
@@ -24,7 +27,7 @@ const LostForm = () => {
       setEmailError("Please enter a valid email ending with @nie.ac.in");
       isValid = false;
     } else {
-      setEmailError('');
+      setEmailError("");
     }
 
     // Validate phone number
@@ -33,7 +36,7 @@ const LostForm = () => {
       setPhoneError("Please enter a valid 10-digit phone number");
       isValid = false;
     } else {
-      setPhoneError('');
+      setPhoneError("");
     }
 
     // Validate semester
@@ -42,7 +45,7 @@ const LostForm = () => {
       setSemesterError("Semester should be a number between 1 and 8");
       isValid = false;
     } else {
-      setSemesterError('');
+      setSemesterError("");
     }
 
     return isValid;
@@ -56,33 +59,33 @@ const LostForm = () => {
     }
 
     const formData = new FormData();
-    formData.append('itemName', itemName);
-    formData.append('email', email);
-    formData.append('phoneNumber', phoneNumber);
-    formData.append('semester', semester);
-    formData.append('branch', branch);
-    formData.append('location', location);
-    formData.append('file', file);
+    formData.append("itemName", itemName);
+    formData.append("email", email);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("semester", semester);
+    formData.append("branch", branch);
+    formData.append("location", location);
+    formData.append("file", file);
 
-    console.log("Submitting form with data:", { itemName, email, phoneNumber, semester, branch, location, file });
     
     try {
       await axios.post("http://localhost:3000/reportlost", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
-      console.log("Form submitted successfully.");
+      navigate("/lost");  // Redirect to /lost after successful submission
     } catch (err) {
       console.log("Error while sending the data in Lost Form", err);
     }
+
   };
 
   return (
     <div className="FormBackground">
-      <form className="LostForm" method='POST' onSubmit={handleSubmit}>
+      <form className="LostForm" method="POST" onSubmit={handleSubmit}>
         <h2>Provide Details of the Item You Lost</h2>
-        
+
         <div className="form-group">
           <label>Item Name</label>
           <input
@@ -93,7 +96,7 @@ const LostForm = () => {
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label>Email</label>
           <input
@@ -127,7 +130,9 @@ const LostForm = () => {
             onChange={(e) => setSemester(e.target.value)}
             required
           />
-          {semesterError && <span className="error-message">{semesterError}</span>}
+          {semesterError && (
+            <span className="error-message">{semesterError}</span>
+          )}
         </div>
 
         <div className="form-group">
@@ -156,11 +161,17 @@ const LostForm = () => {
           <label>Image</label>
           <input
             type="file"
-            onChange={e => setFile(e.target.files[0])}  // No value attribute here
+            onChange={(e) => setFile(e.target.files[0])} // No value attribute here
           />
         </div>
 
-        <button type="submit" style={{ "marginTop": "10px" }} className="submit-btn">Submit</button>
+        <button
+          type="submit"
+          style={{ marginTop: "10px" }}
+          className="submit-btn"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

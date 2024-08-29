@@ -1,8 +1,11 @@
 const mongoose = require("mongoose")
-mongoose.connect("mongodb://127.0.0.1:27017/RecoveryNet");
+require('dotenv').config()
 
 
-const foundItemSchema = new mongoose.Schema({
+mongoose.connect(`mongodb+srv://gk4763549:${process.env.DB_PASSWORD}@recoverynet.f2mxy.mongodb.net/RecoveryNetDb?retryWrites=true&w=majority&appName=RecoveryNet`);
+
+
+const userSchema = new mongoose.Schema({
   itemName: { 
     type: String, 
     required: true 
@@ -33,5 +36,4 @@ const foundItemSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('FoundItem', foundItemSchema);
-
+module.exports = mongoose.model('user', userSchema);

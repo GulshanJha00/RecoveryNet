@@ -59,7 +59,9 @@ const Details = () => {
                     details, such as email and phone number, so that someone who
                     finds your item can reach out to you.
                     <br />
-                    <strong>Upload a Picture (Optional but Recommended):</strong>{" "}
+                    <strong>
+                      Upload a Picture (Optional but Recommended):
+                    </strong>{" "}
                     If you have a picture of the item, upload it. Visuals can
                     greatly increase the chances of your item being recognized.
                   </p>
@@ -129,7 +131,9 @@ const Details = () => {
                     <strong>Contact Information:</strong> Provide your contact
                     details so that the owner of the item can reach out to you.
                     <br />
-                    <strong>Upload a Picture (Optional but Recommended):</strong>{" "}
+                    <strong>
+                      Upload a Picture (Optional but Recommended):
+                    </strong>{" "}
                     If possible, upload a picture of the found item. This can
                     help the owner recognize it more easily.
                   </p>

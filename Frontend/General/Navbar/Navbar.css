@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Teko:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Teko:wght@300..700&display=swap");
 
 .banner {
-  background: rgb(255,0,0);
-  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(50,44,122,1) 100%);
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(50, 44, 122, 1) 100%
+  );
   height: max-content;
   display: flex;
   justify-content: space-between;
@@ -23,7 +27,7 @@
   display: flex;
   margin: 0 1rem;
 }
-.buttons a:hover{
+.buttons a:hover {
   color: rgb(0, 0, 0);
   transition: all 0.25s ease-in;
   border-bottom: 1px solid black;
@@ -44,7 +48,9 @@ button {
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 button:hover {
@@ -74,7 +80,7 @@ button:focus {
   min-width: 150px;
   z-index: 1;
   text-align: center;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
 

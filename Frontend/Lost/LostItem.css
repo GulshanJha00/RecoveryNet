@@ -1,11 +1,13 @@
+/* Background Gradient */
 .bgrund {
-  background: linear-gradient(to bottom right, #A0C4FF, #1100ff);
+  background: linear-gradient(to bottom right, #a0c4ff, #1100ff);
   margin: 0;
-  height: 100vh;
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
 }
 
-
-
+/* Header */
 .header {
   width: 100%;
   display: flex;
@@ -15,7 +17,7 @@
   background-color: #333;
   color: white;
 }
-.header h2{
+.header h2 {
   font-size: 1.5rem;
 }
 
@@ -32,38 +34,50 @@
   background-color: #d62839;
 }
 
-/* Main content container */
-.contentt {
+/* Lost Items Container */
+.lost-items-container {
+  flex: 1;
+  padding: 1rem;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem; /* Adjust the gap between items */
-  padding: 1rem 2rem; /* Padding around the content */
+  align-items: flex-start;
 }
 
-/* Optional: You can add some styling for LostItemCard here or in its own CSS file */
-.lost-item-card {
-  flex: 0 1 300px; /* Each item will take up 300px width, adjust as necessary */
-  max-width: 300px; /* Ensures the items don’t stretch beyond this width */
-  margin: 0.5rem;
+/* Lost Items List */
+.lost-items-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
 }
-@media (max-width:700px) {
-  
-  .header h2{
-    font-size: 0.9rem;
+
+/* Lost Item Card */
+.lost-item-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
   }
 
   .report-button {
-    background-color: #e63946;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .report-button:hover {
-    background-color: #d62839;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
   }
 }
+
+
